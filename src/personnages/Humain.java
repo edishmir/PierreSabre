@@ -15,9 +15,14 @@ public class Humain {
 		return nom;
 	}
 	
+	protected void setArgent(int argent) {
+		this.argent = argent;
+	}
+	
 	public int getArgent() {
 		return argent;
 	}
+	
 	
 	public void gagnerArgent(int gain) {
 		argent += gain;
@@ -44,7 +49,7 @@ public class Humain {
 		}
 	}
 	
-	public void parler(String texte) {
+	protected void parler(String texte) {
 		System.out.println("(" + nom + ") - " + texte);
 	}
 }
