@@ -1,22 +1,20 @@
 package personnages;
 
 public class Commercant extends Humain {
-	private int extorquer = 0;
 
 	public Commercant(String nom, String boisson, int argent) {
 		super(nom, boisson, argent);
 	}
 
 	public int seFaireExtorquer() {
-		int argent = getArgent();
-		extorquer += argent;
-		perdreArgent(argent);
+		int montantExtorque = getArgent();
+		perdreArgent(montantExtorque);
 		parler("J'ai tout perdu! Le monde est trop injuste...");
-		return extorquer;
+		return montantExtorque;
 	}
 
 	public void recevoir(int argent) {
-		parler(argent + " sous ! Je te reemercie généreux donateur!");
+		parler(argent + " sous ! Je te remercie généreux donateur!");
 		gagnerArgent(argent);
 	}
 
