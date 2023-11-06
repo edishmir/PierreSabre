@@ -23,9 +23,9 @@ public class HistoireTP4 {
 		marco.boire();
 		System.out.println("\n");
 		
-		Yakuza yakuLeNoir = new Yakuza("Yaku Le Noir", "whisky", 30, "Warsang");
-		yakuLeNoir.direBonjour();
-		yakuLeNoir.extorquer(marco);
+		Yakuza yaku = new Yakuza("Yaku Le Noir", "whisky", 30, "Warsang");
+		yaku.direBonjour();
+		yaku.extorquer(marco);
 		System.out.println("\n");
 		
 		Ronin roro = new Ronin("Roro", "shoshu", 60);
@@ -33,7 +33,7 @@ public class HistoireTP4 {
 		roro.donner(marco);
 		System.out.println("\n");
 		
-		roro.provoquer(yakuLeNoir);
+		roro.provoquer(yaku);
 	}
 
 }

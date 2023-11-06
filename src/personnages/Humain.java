@@ -2,12 +2,14 @@ package personnages;
 
 public class Humain {
 	private String nom;
-	private String boisson;
+	private String boissonFavorite;
 	private int argent;
+	protected int nbConnaissance = 0;
+	protected Humain[] memoire = new Humain[30];
 	
 	public Humain(String nom, String boisson, int argent) {
 		this.nom = nom;
-		this.boisson = boisson;
+		this.boissonFavorite = boisson;
 		this.argent = argent;
 	}
 
@@ -24,20 +26,20 @@ public class Humain {
 	}
 	
 	
-	public void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {
 		argent += gain;
 	}
 	
-	public void perdreArgent(int depense) {
+	protected void perdreArgent(int depense) {
 		argent -= depense;
 	}
 	
 	public void direBonjour() {
-		parler("Bonjour ! Je m'appelle " + nom + " et j'aime boire du " + boisson + ".");
+		parler("Bonjour ! Je m'appelle " + nom + " et j'aime boire du " + boissonFavorite + ".");
 	}
 	
 	public void boire() {
-		parler("Mmmm, un bon verre de " + boisson + " ! GLOUPS !");
+		parler("Mmmm, un bon verre de " + boissonFavorite + " ! GLOUPS !");
 	}
 	
 	public void acheter(String bien, int prix) {
@@ -51,5 +53,39 @@ public class Humain {
 	
 	protected void parler(String texte) {
 		System.out.println("(" + nom + ") - " + texte);
+	}
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		this.direBonjour();
+		repondre(autreHumain);
+	}
+	
+	private void repondre(Humain autreHumain) {
+		autreHumain.direBonjour();
+		this.memoriser(autreHumain);
+		autreHumain.memoriser(this);
+	}
+	
+	private void memoriser(Humain humain) {
+		if (nbConnaissance <= memoire.length-1) {
+			memoire[nbConnaissance] = humain;
+			nbConnaissance++;
+		} else {
+			for (int i=0; (i+1)<nbConnaissance; i++) memoire[i] = memoire[i+1];
+			memoire[nbConnaissance-1] = humain;
+		}
+	}
+	
+	public void listerConnaissance() {
+		String noms = "";
+		for (int i=0; i<nbConnaissance; i++)
+		{
+			if (i<nbConnaissance-1) {
+				noms += memoire[i].getNom() + ", ";
+			} else {
+				noms += memoire[i].getNom();
+			}
+		}
+		parler("Je connais beaucoup de monde dont : " + noms);
 	}
 }
