@@ -25,6 +25,10 @@ public class Humain {
 		return argent;
 	}
 	
+	public String getBoissonFavorite() {
+		return boissonFavorite;
+	}
+	
 	
 	protected void gagnerArgent(int gain) {
 		argent += gain;
@@ -56,13 +60,13 @@ public class Humain {
 	}
 	
 	public void faireConnaissanceAvec(Humain autreHumain) {
-		this.direBonjour();
+		direBonjour();
 		repondre(autreHumain);
 	}
 	
 	private void repondre(Humain autreHumain) {
 		autreHumain.direBonjour();
-		this.memoriser(autreHumain);
+		memoriser(autreHumain);
 		autreHumain.memoriser(this);
 	}
 	
