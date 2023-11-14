@@ -30,12 +30,12 @@ public class Humain {
 	}
 	
 	
-	protected void gagnerArgent(int gain) {
-		argent += gain;
+	protected void gagnerArgent(int sommeGagnee) {
+		argent += sommeGagnee;
 	}
 	
-	protected void perdreArgent(int depense) {
-		argent -= depense;
+	protected void perdreArgent(int sommePerdue) {
+		argent -= sommePerdue;
 	}
 	
 	public void direBonjour() {
@@ -70,8 +70,8 @@ public class Humain {
 		autreHumain.memoriser(this);
 	}
 	
-	private void memoriser(Humain humain) {
-		if (nbConnaissance <= memoire.length-1) {
+	protected void memoriser(Humain humain) {
+		if (nbConnaissance < memoire.length) {
 			memoire[nbConnaissance] = humain;
 			nbConnaissance++;
 		} else {
